@@ -5,10 +5,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-
-
-
-
+import User from "./models/User.js";
+import dataUser from "./data/index.json" assert { type: "json" };
 /* CONFIGURATION */
 dotenv.config();
 const app = express();
@@ -34,6 +32,7 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ONLY ADD DATA ONE TIME */
+    User.insertMany(dataUser);
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
     // Product.insertMany(dataProduct);
