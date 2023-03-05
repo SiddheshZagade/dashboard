@@ -19,7 +19,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 /* ROUTES */
-
+app.use("client",clientRoutes);
+app.use("/general",generalRoutes);
+app.use("/management",managementRoutes);
+app.use("/sales",salesRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
@@ -32,7 +35,6 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ONLY ADD DATA ONE TIME */
-    User.insertMany(dataUser);
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
     // Product.insertMany(dataProduct);
