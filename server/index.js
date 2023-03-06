@@ -6,7 +6,8 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import User from "./models/User.js";
-import dataUser from "./data/index.json" assert { type: "json" };
+import {dataUser} from "./data/index.js";
+import generalRoutes from "./routes/general.js";
 /* CONFIGURATION */
 dotenv.config();
 const app = express();
@@ -19,10 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 /* ROUTES */
-app.use("client",clientRoutes);
-app.use("/general",generalRoutes);
-app.use("/management",managementRoutes);
-app.use("/sales",salesRoutes);
+app.use("/general", generalRoutes);
+
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
@@ -40,6 +39,6 @@ mongoose
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
-    // User.insertMany(dataUser);
+     //User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error} did not connect`));
