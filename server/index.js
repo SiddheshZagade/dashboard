@@ -6,7 +6,10 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import User from "./models/User.js";
-import {dataUser} from "./data/index.js";
+import {
+  dataUser
+} from "./data/index.js";
+
 import generalRoutes from "./routes/general.js";
 /* CONFIGURATION */
 dotenv.config();
@@ -18,6 +21,7 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
 
 /* ROUTES */
 app.use("/general", generalRoutes);
