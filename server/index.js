@@ -6,11 +6,14 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import User from "./models/User.js";
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
 import {
-  dataUser
+  dataUser,dataProduct,dataProductStat
 } from "./data/index.js";
 
 import generalRoutes from "./routes/general.js";
+import clientRoutes from "./routes/client.js";
 /* CONFIGURATION */
 dotenv.config();
 const app = express();
@@ -24,6 +27,7 @@ app.use(cors());
 
 
 /* ROUTES */
+app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 
 
@@ -40,8 +44,8 @@ mongoose
     /* ONLY ADD DATA ONE TIME */
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
-    // Product.insertMany(dataProduct);
-    // ProductStat.insertMany(dataProductStat);
+    //Product.insertMany(dataProduct);
+    //ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
      //User.insertMany(dataUser);
   })
