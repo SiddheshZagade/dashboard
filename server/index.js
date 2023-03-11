@@ -8,8 +8,10 @@ import morgan from "morgan";
 import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductStat from "./models/ProductStat.js";
+import Transaction from "./models/Transaction.js";
+
 import {
-  dataUser,dataProduct,dataProductStat
+  dataUser,dataProduct,dataProductStat,dataTransaction
 } from "./data/index.js";
 
 import generalRoutes from "./routes/general.js";
@@ -31,6 +33,7 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 
 
+
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
 mongoose
@@ -46,7 +49,7 @@ mongoose
     // OverallStat.insertMany(dataOverallStat);
     //Product.insertMany(dataProduct);
     //ProductStat.insertMany(dataProductStat);
-    // Transaction.insertMany(dataTransaction);
+     //Transaction.insertMany(dataTransaction);
      //User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error} did not connect`));
