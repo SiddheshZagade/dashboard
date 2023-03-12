@@ -5,14 +5,15 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import salesRoutes from "./routes/sales.js";
 import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
+import OverallStat from "./models/OverallStat.js";
 
 import {
-  dataUser,dataProduct,dataProductStat,dataTransaction
-} from "./data/index.js";
+  dataUser,dataProduct,dataProductStat,dataTransaction,dataOverallStat,} from "./data/index.js";
 
 import generalRoutes from "./routes/general.js";
 import clientRoutes from "./routes/client.js";
@@ -31,7 +32,7 @@ app.use(cors());
 /* ROUTES */
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
-
+app.use("/sales", salesRoutes);
 
 
 /* MONGOOSE SETUP */
@@ -46,7 +47,7 @@ mongoose
 
     /* ONLY ADD DATA ONE TIME */
     // AffiliateStat.insertMany(dataAffiliateStat);
-    // OverallStat.insertMany(dataOverallStat);
+    //OverallStat.insertMany(dataOverallStat);
     //Product.insertMany(dataProduct);
     //ProductStat.insertMany(dataProductStat);
      //Transaction.insertMany(dataTransaction);
